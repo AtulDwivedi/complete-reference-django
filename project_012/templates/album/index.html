@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to Album</title>
+    <link rel="stylesheet" href="{% static 'album/css/master.css' %}">
+  </head>
+  <body>
+    <h1>Welcome to album</h1>
+    <p>An amazing collection of nature photoes that will blow your mind.</p>
+
+    <div class="main">
+
+      <div class="row">
+        <div class="col">
+          <img src="{% static 'album/images/nature_001.jpeg' %}" alt="">
+        </div>
+        <div class="col">
+          <img src="{% static 'album/images/nature_002.jpeg' %}" alt="">
+        </div>
+        <div class="col">
+          <img src="{% static 'album/images/nature_003.jpg' %}" alt="">
+        </div>
+        <div class="col">
+          <img src="{% static 'album/images/nature_004.jpeg' %}" alt="">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <img src="{% static 'album/images/nature_005.jpeg' %}" alt="">
+        </div>
+        <div class="col">
+          <img src="{% static 'album/images/nature_006.jpeg' %}" alt="">
+        </div>
+        <div class="col">
+          <img src="{% static 'album/images/nature_007.jpg' %}" alt="">
+        </div>
+        <div class="col">
+          <img src="{% static 'album/images/nature_008.jpeg' %}" alt="">
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>

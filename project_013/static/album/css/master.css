@@ -1,0 +1,26 @@
+body{
+  background-color: #02C39A;
+}
+
+h1{
+  text-align: center;
+  color: #05668D;
+}
+
+p{
+  text-align: center;
+  color: #FDFFFC;
+}
+
+.col{
+  float: left;
+  width: 24%;
+  height: 240px;
+  border: 2px solid black;
+  margin: 2px;
+}
+
+img{
+  width: 100%;
+  height: inherit;
+}

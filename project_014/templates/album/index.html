@@ -11,37 +11,15 @@
     <p>An amazing collection of nature photoes that will blow your mind.</p>
 
     <div class="main">
-
+      {% if photos %}
       <div class="row">
+        {% for photo in photos %}
         <div class="col">
           <img src="{{photo.url}}" alt="">
         </div>
-        <div class="col">
-          <img src="{% static 'album/images/nature_002.jpeg' %}" alt="">
-        </div>
-        <div class="col">
-          <img src="{% static 'album/images/nature_003.jpg' %}" alt="">
-        </div>
-        <div class="col">
-          <img src="{% static 'album/images/nature_004.jpeg' %}" alt="">
-        </div>
+        {% endfor %}
       </div>
-
-      <div class="row">
-        <div class="col">
-          <img src="{% static 'album/images/nature_005.jpeg' %}" alt="">
-        </div>
-        <div class="col">
-          <img src="{% static 'album/images/nature_006.jpeg' %}" alt="">
-        </div>
-        <div class="col">
-          <img src="{% static 'album/images/nature_007.jpg' %}" alt="">
-        </div>
-        <div class="col">
-          <img src="{% static 'album/images/nature_008.jpeg' %}" alt="">
-        </div>
-      </div>
-
+      {% endif %}
     </div>
   </body>
 </html>

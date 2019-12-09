@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from user_app.forms import UserForm, UserProfileForm
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect, HttpResponse
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -37,8 +41,30 @@ def user_registration(request):
 
 
 def user_login(request):
-    return render(request, 'user_app/login.html', {})
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username = username, password = password)
+
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                return HttpResponse('Your account is not active.')
+        else:
+            print(f'Login failed for username {username} and password {password}')
+            return HttpResponse('Invalid login details')
+    else:
+        return render(request, 'user_app/login.html', {})
 
 
+@login_required
 def user_logout(request):
-    return render(request, 'user_app/login.html', {})
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
+
+@login_required
+def special(request):
+    return HttpResponse('You are loggen in.')

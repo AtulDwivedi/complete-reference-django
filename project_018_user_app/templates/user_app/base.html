@@ -30,13 +30,15 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav">
-                <li class="navbar-item"><a class="navbar-link" href="{% url 'user_app:login' %}">Login</a></li>
-            </ul>
-
+            {% if user.is_authenticated %}
             <ul class="navbar-nav">
                 <li class="navbar-item"><a class="navbar-link" href="{% url 'user_app:logout' %}">Logout</a></li>
             </ul>
+            {% else %}
+            <ul class="navbar-nav">
+                <li class="navbar-item"><a class="navbar-link" href="{% url 'user_app:user_login' %}">Login</a></li>
+            </ul>
+            {% endif %}
 
             <ul class="navbar-nav">
                 <li class="navbar-item"><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>

@@ -7,4 +7,19 @@
         officiis, laudantium explicabo nesciunt soluta, ratione distinctio non consequatur mollitia facere aliquam at,
         illo beatae doloremque?</p>
 </div>
+
+{% if registered %}
+<h1>Thanks for registering</h1>
+{% else %}
+<h1>Register here</h1>
+<p>Please fill the form</p>
+<form action="{% url 'user_app:registration' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{user_form.as_p}}
+    {{profile_form.as_p}}
+    <input type="submit" value="Register">
+</form>
+{% endif %}
+
+
 {% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="jumbotron">
+  <h1>Posts</h1>
+  <p>All technical posts</p>
+</div>
+<div class="row row-cols-1 row-cols-md-3">
+  {% for post in post_list %}
+  <div class="col mb-4">
+    <div class="card">
+      <!-- <img src="..." class="card-img-top" alt="..."> -->
+      <div class="card-body">
+        <h5 class="card-title"><a href="{% url 'blog:post_detail' pk=post.pk %}" rel="noopener noreferrer">{{post.title}}</a></h5>
+        <p class="card-text">{{post.text}}</p>
+        <a href="#" class="btn btn-primary">View</a>
+      </div>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Author: {{post.author}}</small>
+      <small class="text-muted">Published: {{post.published_on | date:'d-M-Y'}}</small>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+{% endblock %}

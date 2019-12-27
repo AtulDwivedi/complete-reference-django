@@ -1,4 +1,4 @@
-"""tech_blog URL Configuration
+"""project_018_CBV URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -15,14 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from item import views, urls
 from django.conf.urls import url, include
-from django.contrib.auth.views import LoginView, LogoutView
-from blog import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'', include('blog.urls')),
-    url(r'^blog/', include('blog.urls', namespace='blog')),
-    url(r'^login/$', LoginView.as_view(), name='login'),
-    url(r'loguut/$', LogoutView.as_view(), name  = 'logout', kwargs = {'next_page': '/'}),
+    url(r'^$', views.IndexView.as_view()),
+    url(r'^item/', include('item.urls')),
 ]

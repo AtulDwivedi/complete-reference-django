@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="jumbotron">
+    <h1>{{post.title}}</h1>
+    
+</div>
+<p>{{post.text}}</p>
+{% if user.is_authenticated %}
+<a class="btn btn-primary" href="{% url 'blog:post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+<a class="btn btn-primary" href="{% url 'blog:post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+{% endif %}
+{% if post.published_date %}
+    <div class="date postdate">
+        {{ post.published_date }}
+    </div>
+
+{% else %}
+    <a class="btn btn-default" href="{% url 'blog:publish_post' pk=post.pk %}">Publish</a>
+{% endif %}
+<hr>
+{% for comment in post.comments.all %}
+{{comment.text}}
+{% endfor %}
+{% endblock %}

@@ -8,7 +8,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     text = models.TextField()
     created_on = models.DateTimeField(default=timezone.now())
-    pulished_on = models.DateTimeField(blank=True, null=True)
+    published_on = models.DateTimeField(blank=True, null=True)
 
     def publish(self):
         self.published_on = timezone.now()
@@ -18,14 +18,15 @@ class Post(models.Model):
         return self.comments.filter(approved_comment=True)
 
     def get_absolute_url(self):
-        return reverse('post_detail', kwargs={'pk': self.pk})
+        return reverse('post_detail', kwargs={'pk':self.pk})
 
     def __str__(self):
         return self.title
 
 
 class Comment(models.Model):
-    post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='comments')
+    post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, 
+    related_name='comments')
     author = models.CharField(max_length=255)
     text = models.TextField()
     created_on = models.DateTimeField(default=timezone.now())

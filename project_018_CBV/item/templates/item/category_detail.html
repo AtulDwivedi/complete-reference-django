@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="row row-cols-1 row-cols-md-2">
+    {% for item in category.items.all %}
+    <div class="col mb-4">
+        <div class="card">
+            <img src="{{item.image}}" height="260" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{{item.id}}" class="btn btn-primary btn-block">{{item.name}}</a></h5>
+                <p class="card-text">{{item.price}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

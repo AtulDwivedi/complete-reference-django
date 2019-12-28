@@ -9,4 +9,7 @@ urlpatterns = [
     url(r'^about_us/', views.AboutUsView.as_view(), name = 'about_us'),
     url(r'^category/', views.CategoryListView.as_view(), name = 'category_list'),
     url(r'^categories/(?P<pk>\d+)/', views.CategoryDetailView.as_view(), name = 'category_detail'),
+    url(r'^create/', views.CreateCategoryView.as_view(), name = 'category_create'),
+    url(r'^update/(?P<pk>\d+)/', views.UpdateCategoryView.as_view(), name = 'category_update'),
+    url(r'^delete/(?P<pk>\d+)/', views.DeleteCategoryView.as_view(), name = 'category_delete'),
 ]

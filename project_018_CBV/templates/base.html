@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'contact_us.css' %}">
+    <link rel="stylesheet" href="{% static 'contact_us.css' %}">
     <title>Base</title>
 </head>
 
@@ -18,16 +18,22 @@
     <div class="container">
         <ul class="nav nav-tabs mb-4">
             <li class="nav-item">
-                <a class="nav-link {% if active == 'index' %}active{% endif %}" href="{% url 'item:index' %}">Home</a>
+                <a class="nav-link" href="{% url 'item:index' %}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {% if active == 'services' %}active{% endif %}" href="{% url 'item:category_list' %}">Categories</a>
+                <a class="nav-link" href="{% url 'item:category_list' %}">Categories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'item:category_create' %}">Create Category</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'item:about_us' %}">About Us</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {% if active == 'contact_us' %}active{% endif %}" href="{% url 'item:contact_us' %}">Contact Us</a>
+                <a class="nav-link" href="{% url 'item:contact_us' %}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
             </li>
         </ul>
 

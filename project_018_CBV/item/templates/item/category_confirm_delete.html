@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="jumbotron">
+    <h1>Delete</h1>
+    <p>Do you really want to delete <strong>{{category.name}} </strong> ?</p>
+</div>
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-danger" value="Confirm">
+    <a href="{% url 'item:category_list' %}" class="btn btn-info">Cancel</a>
+</form>
+{% endblock %}

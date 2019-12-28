@@ -1,13 +1,26 @@
 from django.shortcuts import render
-from django.views.generic import (View, TemplateView, ListView, DetailView)
+from django.views.generic import (View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView)
 from django.http import HttpResponse
 from item.models import (Category, Item)
+from django.urls import reverse_lazy
 
 class CategoryListView(ListView):
     model = Category
 
 class CategoryDetailView(DetailView):
     model = Category
+
+class CreateCategoryView(CreateView):
+    fields = ('name', 'image')
+    model = Category
+
+class UpdateCategoryView(UpdateView):
+    fields = ('name', 'image')
+    model = Category
+
+class DeleteCategoryView(DeleteView):
+    model = Category
+    success_url = reverse_lazy('item:category_list')
 
 class IndexView(TemplateView):
     template_name = 'index.html'
@@ -27,6 +40,10 @@ class ContactUsView(TemplateView):
         return context
 
 
+class GreetingView(View):
+    def get(self, request):
+        return HttpResponse('Good morning...!!!')
+
 class AboutUsView(View):
     def get(self, request):
-        return HttpResponse('We are perfectionist with deadlines.')
+        return render(request, 'about_us.html', {})
